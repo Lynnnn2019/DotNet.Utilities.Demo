@@ -1,0 +1,61 @@
+﻿<Window x:Class="XmlParseDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:XmlParseDemo.ViewModel"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" MinWidth="150"></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--操作-->
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,5" Click="Button_Click">读取</Button>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,5">保存</Button>
+        </StackPanel>
+        
+        <!--xml树-->
+        <GroupBox Header="xml树" Grid.Row="1">
+            <TreeView x:Name="treeView" VerticalAlignment="Top" HorizontalAlignment="Left"
+           ItemsSource="{Binding ItemTreeDataList}" BorderThickness="0" SelectedItemChanged="TreeView_SelectedItemChanged">
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                        <Setter Property="FontWeight" Value="Normal" />
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="FontWeight" Value="Bold" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <TextBlock x:Name="treeViewItemTB" Text="{Binding itemName}" Margin="10,0" Tag="{Binding itemId}"/>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </GroupBox>
+
+        <GridSplitter Width="5" Grid.Row="1"></GridSplitter>
+
+        <!--属性设置-->
+        <GroupBox Header="xml属性设置" Grid.Row="1" Grid.Column="1">
+            <DataGrid Name="dgProperty" ItemsSource="{Binding PropertyDatas}" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="属性名称" Width="*" Binding="{Binding Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="属性值" Width="*" Binding="{Binding Value}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+    </Grid>
+</Window>
