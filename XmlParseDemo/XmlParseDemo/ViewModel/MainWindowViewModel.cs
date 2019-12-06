@@ -165,7 +165,7 @@ namespace XmlParseDemo.ViewModel
         /// </summary>
         public void WriteXml()
         {
-            //修改测试20191206
+            //修改测试20191206--
         }
 
         private bool hasFindSelectItem = false;
