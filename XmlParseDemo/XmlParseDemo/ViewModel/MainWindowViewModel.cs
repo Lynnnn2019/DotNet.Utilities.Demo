@@ -220,6 +220,13 @@ namespace XmlParseDemo.ViewModel
             }
         }
         #endregion
+
+        #region 修改测试
+        public int add(int a, int b) 
+        {
+            return (int)(a + b);
+        }
+        #endregion
     }
 
     /// <summary>

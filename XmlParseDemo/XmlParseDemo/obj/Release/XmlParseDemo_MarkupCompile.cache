@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-E:\GitProjects\CSharp\Test\DotNet.Utilities.Demo\XmlParseDemo\XmlParseDemo\obj\Debug\
+E:\GitProjects\CSharp\Test\DotNet.Utilities.Demo\XmlParseDemo\XmlParseDemo\obj\Release\
 XmlParseDemo
 none
 false
-DEBUG;TRACE
+TRACE
 E:\GitProjects\CSharp\Test\DotNet.Utilities.Demo\XmlParseDemo\XmlParseDemo\App.xaml
 11151548125
 
@@ -16,5 +16,5 @@ E:\GitProjects\CSharp\Test\DotNet.Utilities.Demo\XmlParseDemo\XmlParseDemo\App.x
 12-1401562060
 MainWindow.xaml;
 
-False
+True
 
